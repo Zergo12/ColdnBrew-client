@@ -49,16 +49,22 @@ function LoginPage() {
       <h1>Login</h1>
 
       <form onSubmit={handleLoginSubmit}>
+
+      <div className="inputsLogin ">
         <label>Email:</label>
         <input type="email" name="email" value={email} onChange={handleEmail} />
-
-        <label>Password:</label>
+      </div>
+       
+    <div className="inputsLogin ">
+    <label>Password:</label>
         <input
           type="password"
           name="password"
           value={password}
           onChange={handlePassword}
         />
+    </div>
+       
 
         <button type="submit">Login</button>
       </form>

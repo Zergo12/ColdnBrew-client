@@ -9,37 +9,50 @@ function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <nav>
-      <Link to="/">
-        <button>Home</button>
-      </Link>
+    <>
+	<nav className="navbar">
+          <div className="logo">
+            <a href="/">Cold&Brew</a>
+          </div>
 
-      {isLoggedIn && (
-        <>
-          <button onClick={logOutUser}>Logout</button>
+        <ul>
+          <li><a href="/brewing-methods">Brewing Methods</a></li>
+          <li><a href="/recipes">Recipes</a></li>
+          <li><a href="/facts">Facts</a></li>
+        </ul>
 
-          <Link to="/profile">
-            <button>Profile</button>
-            {/* <img src="https://picsum.photos/id/402/200/300" style={{ width: 50, height: 50, borderRadius: 25}} alt="profile" /> */}
-          </Link>
+        {isLoggedIn && (
+          <>
+            <button onClick={logOutUser}>Logout</button>
 
-          <span>{user && user.name}</span>
-        </>
-      )}
+            <Link to="/profile">
+              <button>Profile</button>
+              {/* <img src="https://picsum.photos/id/402/200/300" style={{ width: 50, height: 50, borderRadius: 25}} alt="profile" /> */}
+            </Link>
 
-      {!isLoggedIn && (
-        <>
-          <Link to="/signup">
-            {" "}
-            <button>Sign Up</button>{" "}
-          </Link>
-          <Link to="/login">
-            {" "}
-            <button>Login</button>{" "}
-          </Link>
-        </>
-      )}
-    </nav>
+            <span>{user && user.name}</span>
+          </>
+        )}
+
+        {!isLoggedIn && (
+          <div className="btnLoggedOut">
+            <Link to="/signup">
+              {" "}
+              <button>Sign Up</button>{" "}
+            </Link>
+            <Link to="/login">
+              {" "}
+              <button>Login</button>{" "}
+            </Link>
+          </div>
+        )}
+
+        {/* <form>
+          <input type="text" name="search" placeholder="Search"/>
+          <button className="btnSearch" type="submit">Search</button>
+        </form> */}
+      </nav>
+    </>
   );
 }
 
