@@ -1,78 +1,67 @@
 import "./LoginPage.css";
-import { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/auth.context";
+import { Form, Link, useActionData, useNavigate, useOutletContext } from "react-router-dom";
 import authService from "../../services/auth.service";
 
+export const loginPageAction = async ({ request }) => {
+	const formData = await request.formData()
+	const email = formData.get("email")
+	const password = formData.get("password")
+
+	try {
+		const { data } = await authService.login({ email, password })
+		return {
+			authToken: data.authToken,
+			error: null
+		}
+	} catch (error) {
+		const {
+			request: { response }
+		} = error
+		const { message } = JSON.parse(response)
+		return { error: message, authToken: null }
+	}
+}
+
 function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState(undefined);
 
-  const navigate = useNavigate();
+	const navigate = useNavigate()
+	const actionData = useActionData()
+	// Aqui extraemos las funciones del contexto que son necesarias para reflejar la autenticacion exitosa en la app
+	const { storeToken, authenticateUser } = useOutletContext()
 
-  const { storeToken, authenticateUser } = useContext(AuthContext);
+	// Como action data puede no traer informacion inicialmente, no podemos destructurar, pero creamos estas variables que pueden o no tener ese dato.
+	// Cuando el dato exista y se vuelva a pintar el componente mostraremos el error o ejecutamos la funcionalidad que refleja la sesion en caso de traer el token.
+	const authToken = actionData?.authToken
+	const error = actionData?.error
+	console.log(authToken)
 
-  const handleEmail = (e) => setEmail(e.target.value);
-  const handlePassword = (e) => setPassword(e.target.value);
-
-  const handleLoginSubmit = (e) => {
-    e.preventDefault();
-    const requestBody = { email, password };
-
-    // Send a request to the server using axios
-    /* 
-    axios.post(`${process.env.REACT_APP_SERVER_URL}/auth/login`)
-      .then((response) => {})
-    */
-
-    // Or using a service
-    authService
-      .login(requestBody)
-      .then((response) => {
-        // If the POST request is successful store the authentication token,
-        // after the token is stored authenticate the user
-        // and at last navigate to the home page
-        storeToken(response.data.authToken);
-        authenticateUser();
-        navigate("/");
-      })
-      .catch((error) => {
-        // If the request resolves with an error, set the error message in the state
-        const errorDescription = error.response.data.message;
-        setErrorMessage(errorDescription);
-      });
-  };
+	if (authToken) {
+		storeToken(authToken)
+		authenticateUser()
+		navigate("/")
+	}
 
   return (
-    <div className="LoginPage">
-      <h1>Login</h1>
-
-      <form onSubmit={handleLoginSubmit}>
-
-      <div className="inputsLogin ">
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
-      </div>
-       
-    <div className="inputsLogin ">
-    <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
-    </div>
-       
-
-        <button type="submit">Login</button>
-      </form>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
-    </div>
+	<div className="form-container">
+		<div className="form LoginPage">
+		<h1>Login</h1>
+	
+		<Form action="/login" method="POST">
+			<label>Email:</label>
+			<input type="email" name="email" />
+	
+			<label>Password:</label>
+			<input type="password" name="password" />
+	
+			<button type="submit">Login</button>
+		</Form>
+		{error && <p className="error-message">{error}</p>}
+	
+		<p>Don't have an account yet?</p>
+		<Link to={"/signup"}> Sign Up</Link>
+		</div>
+	</div>
+  
   );
 }
 

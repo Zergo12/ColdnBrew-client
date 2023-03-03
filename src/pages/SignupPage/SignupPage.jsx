@@ -1,88 +1,58 @@
 import "./SignupPage.css";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Form, Link, redirect, useActionData } from "react-router-dom";
 import authService from "../../services/auth.service";
 
+export const signupPageAction = async ({ request }) => {
+	const formData = await request.formData()
+	const email = formData.get("email")
+	const password = formData.get("password")
+	const name = formData.get("name")
+	const description = formData.get("description")
+
+	try {
+		await authService.signup({ email, password, name, description })
+		return redirect("/login")
+	} catch (error) {
+		const {
+			request: { response }
+		} = error
+		const { message } = JSON.parse(response)
+		return message
+	}
+}
+
 function SignupPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [errorMessage, setErrorMessage] = useState(undefined);
 
-  const navigate = useNavigate();
-
-  const handleEmail = (e) => setEmail(e.target.value);
-  const handlePassword = (e) => setPassword(e.target.value);
-  const handleName = (e) => setName(e.target.value);
-
-  const handleSignupSubmit = (e) => {
-    e.preventDefault();
-    // Create an object representing the request body
-    const requestBody = { email, password, name };
-
-    // Send a request to the server using axios
-    /* 
-    const authToken = localStorage.getItem("authToken");
-    axios.post(
-      `${process.env.REACT_APP_SERVER_URL}/auth/signup`, 
-      requestBody, 
-      { headers: { Authorization: `Bearer ${authToken}` },
-    })
-    .then((response) => {})
-    */
-
-    // Or using a service
-    authService
-      .signup(requestBody)
-      .then((response) => {
-        // If the POST request is successful redirect to the login page
-        navigate("/login");
-      })
-      .catch((error) => {
-        // If the request resolves with an error, set the error message in the state
-        const errorDescription = error.response.data.message;
-        setErrorMessage(errorDescription);
-      });
-  };
+  const errorMessage = useActionData()
 
   return (
-    <div className="SignupPage">
-      <h1>Sign Up</h1>
+	<div className="form-container">
+		<div className="form SignupPage">
+			<h1>Sign Up</h1>
 
-      <form onSubmit={handleSignupSubmit}>
-        <div className="inputsSignUp">
-          <label>Email:</label>
-          <input type="email" name="email" value={email} onChange={handleEmail} />
-        </div>
+			<Form action="/signup" method="POST">
+				<label>Email:</label>
+				<input type="email" name="email" />
 
-        <div className="inputsSignUp">
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
-        </div>
+				<label>Password:</label>
+				<input type="password" name="password" />
 
-        <div className="inputsSignUp"> 
-        <label>Name:</label>
-        <input type="text" 
-          name="name"
-          value={name} 
-          onChange={handleName} 
-         />
-        </div>
-       
-        <button type="submit">Sign Up</button>
-      </form>
+				<label>Name:</label>
+				<input type="text" name="name" />
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-  
-        <p>Already have account?</p>
-        <Link to={"/login"}> Login</Link>
+				<label>About me:</label>
+				<input type="text" name="description" />
 
-    </div>
+				<button type="submit">Sign Up</button>
+			</Form>
+
+			{errorMessage && <p className="error-message">{errorMessage}</p>}
+
+			<p>Already have account?</p>
+			<Link to={"/login"}> Login</Link>
+		</div>
+	</div>
+    
   );
 }
 

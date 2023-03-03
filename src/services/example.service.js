@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-class ExampleService {
+class Recipes {
   constructor() {
     this.api = axios.create({
       baseURL: process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
@@ -20,13 +20,13 @@ class ExampleService {
   }
 
   // POST /api/examples
-  createOne = async (requestBody) => {
-    return this.api.post('/api/examples', requestBody);
+  createRecipe = async (requestBody) => {
+    return this.api.post('/create', requestBody);
   }
 
-  // GET /api/examples
+  // GET allRecipes
   getAll = async () => {
-    return this.api.get('/api/examples');
+    return this.api.get('/recipes');
   }
 
   // GET /api/examples/:id
@@ -48,6 +48,6 @@ class ExampleService {
 }
 
 // Create one instance of the service
-const exampleService = new ExampleService();
+const recipesService = new Recipes();
 
-export default exampleService;
+export default recipesService;
