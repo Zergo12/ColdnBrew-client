@@ -23,8 +23,8 @@ import {
 	RouterProvider
 } from "react-router-dom"
 import Root from "./pages/Root/Root"
-import ItemsDetail from "./pages/ItemsDetail/ItemsDetail";
-import { getItemByID } from "./services/items.service";
+import ItemsDetail, { itemDetailsLoader } from "./pages/ItemsDetail/ItemsDetail";
+
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -99,13 +99,13 @@ const router = createBrowserRouter(
 			/>
 			<Route
 				path="/:id"
-				loader={getItemByID}
+				loader={itemDetailsLoader}
 				element={
-					<IsAnon>
+					<IsPrivate>
 					<Navbar />
 					<ItemsDetail/>
 					<Footer/>
-					</IsAnon>
+					</IsPrivate>
 				}
 			/>
       		<Route

@@ -11,6 +11,7 @@ export const allItemsLoader = async () => {
 
 function BrewingMethodsPage() {
   const { items } = useLoaderData()
+  console.log(items)
   return (
     <div className='boxes'>
     <h3>Brewing Methods</h3>
