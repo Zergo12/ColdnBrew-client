@@ -41,6 +41,7 @@
   justify-content: center;
   align-items: center;
   margin-left: auto;
+  
 }
 
 .btnLoggedOut button {
@@ -84,12 +85,16 @@
   }
   
   button {
-    padding: 8px 12px;
+    padding: 5px 10px;
     margin: 2px;
     background-color: #99927e;
     color: #fff;
     border: none;
     border-radius: 4px;
+  }
+
+  .btnLogout{
+    padding: 5px 10px;
   }
 
   .navbar button:hover {

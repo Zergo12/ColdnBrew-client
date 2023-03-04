@@ -23,7 +23,7 @@ function Navbar() {
 
           {isLoggedIn && (
             <div className="btnLoggedIn" >
-              <button onClick={logOutUser}>Logout</button>
+              <button className="btnLogout" onClick={logOutUser}>Logout</button>
 
               <Link to="/profile">
                 <button>Profile</button>

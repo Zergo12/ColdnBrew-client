@@ -9,9 +9,10 @@
     flex-direction: column;
     padding: 10px;
     margin-bottom: 20px;
-    width: 92vw;
-    margin-left: 40px;
+    width: 70vw;
+    margin-left: 15dvw;
     background-color: #f1f1f1;
+    border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;  
 }
 
@@ -27,7 +28,7 @@
     height: auto;
     margin: 10px 0;
     border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   }
   
   .row1 {
@@ -36,6 +37,10 @@
     align-items: center;
     margin: 10px;
     margin-bottom: 10px;
+  }
+
+  .container p {
+    text-align: center;
   }
 
   .row2{
@@ -66,3 +71,17 @@
     text-decoration: none;
   }
   
+  .table-style {
+    width: 100%;
+    margin-left: 45px;
+  
+  }
+  
+  .table-style td, .table-style th {
+    border: 1px solid 	#46555b;
+    padding: 8px;
+    text-align: center;
+  
+  }
+  
+ 
