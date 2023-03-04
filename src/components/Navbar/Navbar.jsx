@@ -18,6 +18,7 @@ function Navbar() {
             <li><a href="/brewing-methods">Methods</a></li>
             <li><a href="/recipes">Recipes</a></li>
             <li><a href="/facts">Facts</a></li>
+            <li><a href="/reviews">Reviews</a></li>
           </ul>
 
           {isLoggedIn && (

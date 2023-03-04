@@ -3,6 +3,7 @@ import "./ProfilePage.css";
 
 function ProfilePage() {
   const { user } = useOutletContext();
+  console.log (user) 
   return (
     <div className="profile-container">
     <div className="profileHeader">
@@ -12,7 +13,7 @@ function ProfilePage() {
     </div>
     <img className="imgProfile" src="https://static-00.iconduck.com/assets.00/user-avatar-glad-icon-256x255-cbmmpmut.png" alt="Profile Picture"/>
     <div className="profileDescription">
-      <p>{user.description} </p>
+      <p>{user.description}</p>
     </div>
     <button className="editProfileButton">Edit Profile</button>
     <div className="extraContent" >

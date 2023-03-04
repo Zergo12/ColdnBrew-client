@@ -1,21 +1,33 @@
 import React from 'react'
-import { useLoaderData } from 'react-router-dom'
-import { getItemByID } from '../../services/items.service'
+import { Form, Link, redirect, useLoaderData } from 'react-router-dom'
+import { deleteItem, getItemByID } from '../../services/items.service'
+import './ItemsDetail.css'
 
-export const itemDetailsLoader = async({params:{ id }}) => { console.log({params:{ id }})
+export const itemDetailsLoader = async({params:{ id }}) => { 
   const {data: item} = await getItemByID(id)
-  console.log (item) 
   return {item}
+}
+
+export const deleteItemAction = async ({params:{id}}) => { 
+  await deleteItem (id)
+  return redirect("/")
 }
 
 function ItemsDetail() {
   const {item} = useLoaderData()
-  console.log (item) 
   return (
-    <div>
+    <div className='itemDetails'>
       <img src={item.image} alt={item.title}/>
       <h2>{item.title}</h2>
       <p>{item.description}</p>
+      <div className="buttons">
+        <Link to={`/edit/${item._id}`}>
+        <button className="editButton">Edit</button>
+        </Link>
+        <Form action={`/delete/${item._id}`} method='POST'>
+          <button type="submit" className="deleteButton">Delete</button>
+        </Form>
+      </div>
     </div>
   )
 }

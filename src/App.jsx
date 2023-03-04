@@ -23,7 +23,9 @@ import {
 	RouterProvider
 } from "react-router-dom"
 import Root from "./pages/Root/Root"
-import ItemsDetail, { itemDetailsLoader } from "./pages/ItemsDetail/ItemsDetail";
+import ItemsDetail, { deleteItemAction, itemDetailsLoader } from "./pages/ItemsDetail/ItemsDetail";
+import FormEdit, { editItemAction } from "./components/FormEdit/FormEdit";
+import ReviewsPage from "./pages/ReviewsPage/ReviewsPage";
 
 
 const router = createBrowserRouter(
@@ -108,14 +110,47 @@ const router = createBrowserRouter(
 					</IsPrivate>
 				}
 			/>
+			<Route
+				path="/delete/:id"
+				action={deleteItemAction}
+				element={
+					<IsPrivate>
+					<Navbar />
+					<ItemsDetail/>
+					<Footer/>
+					</IsPrivate>
+				}
+			/>
+			<Route
+				path="/edit/:id"
+				loader={itemDetailsLoader}
+				action={editItemAction}
+				element={
+					<IsPrivate>
+					<Navbar />
+					<FormEdit/>
+					<Footer/>
+					</IsPrivate>
+				}
+			/>
       		<Route
 				path="/facts"
 				element={
-					<IsAnon>
+					<IsPrivate>
 					<Navbar />
 					<FactsPage/>
 					<Footer/>
-					</IsAnon>
+					</IsPrivate>
+				}
+			/>
+				<Route
+				path="/reviews"
+				element={
+					<IsPrivate>
+					<Navbar />
+					<ReviewsPage/>
+					<Footer/>
+					</IsPrivate>
 				}
 			/>
 			<Route
