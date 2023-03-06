@@ -14,7 +14,7 @@ function BoxReview() {
         </div>
         <table className='table-style'>
           <tr>
-            <td><strong>Review Date:</strong> May 2023</td>
+            <td><strong>Variety:</strong> Arabica</td>
             <td><strong>Property:</strong> Santa Cruz</td>
             <td><strong>Rating:</strong> 100</td>
           </tr>

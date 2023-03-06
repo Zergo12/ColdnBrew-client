@@ -26,6 +26,7 @@ import Root from "./pages/Root/Root"
 import ItemsDetail, { deleteItemAction, itemDetailsLoader } from "./pages/ItemsDetail/ItemsDetail";
 import FormEdit, { editItemAction } from "./components/FormEdit/FormEdit";
 import ReviewsPage from "./pages/ReviewsPage/ReviewsPage";
+import FormReview from "./components/FormReview/FormReview";
 
 
 const router = createBrowserRouter(
@@ -149,6 +150,16 @@ const router = createBrowserRouter(
 					<IsPrivate>
 					<Navbar />
 					<ReviewsPage/>
+					<Footer/>
+					</IsPrivate>
+				}
+			/>
+				<Route
+				path="/create-review"
+				element={
+					<IsPrivate>
+					<Navbar />
+					<FormReview/>
 					<Footer/>
 					</IsPrivate>
 				}
