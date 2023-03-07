@@ -18,7 +18,7 @@ export const createItemAction = async ({ request }) => {
 }
 function FormCreate() {
   return (
-    <div className='form-container'>
+    <div className='form-container-create'>
         <div className="form">
           <h1>Add a Recipe or a Method!</h1>
 

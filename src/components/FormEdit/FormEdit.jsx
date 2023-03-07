@@ -22,7 +22,7 @@ export const editItemAction = async ({params:{id}, request}) => {
 function FormEdit() {
 const {item} = useLoaderData()
   return (
-    <div className='form-container'>
+    <div className='form-container-container'>
         <div className="form">
           <h1>Edit your Recipe or Method</h1>
 

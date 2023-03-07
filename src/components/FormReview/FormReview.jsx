@@ -1,99 +1,65 @@
 
 import { Form, redirect} from 'react-router-dom';
+import { createReview } from '../../services/reviews.service';
 import './FormReview.css'
 
 
-// export const createReviewAction = async ({ request }) => {
-// 	const formData = await request.formData()
-// 	const title = formData.get("title")
-// 	const description = formData.get("description")
-// 	const image = formData.get("image")
-// 	const category = formData.get("category")
+export const createReviewAction = async ({ request }) => {
+	const formData = await request.formData()
+	const title = formData.get("title")
+	const comments = formData.get("comments")
+	const image = formData.get("image")
+	const rating = formData.get("rating")
+	const origin = formData.get("origin")
+	const quality = formData.get("quality")
+	const producer = formData.get("producer")
+	const process = formData.get("process")
+	const varietal = formData.get("varietal")
 
-//   console.log(title, description, image, category)
-//   await createReview ({title, description, image, category})
+  console.log(title, comments, image, rating, origin, quality, producer, process, varietal)
+  await createReview ({title, comments, image, rating, origin ,quality, producer, process, varietal})
 
-//   return redirect("/")
-// }
+  return redirect("/")
+}
 
 function FormReview() {
   return (
-    // <div className='form-container'>
-    //     <div className="form">
-    //       <h1>Add a Review</h1>
+    <div className='form-container'>
+        <div className="form">
+          <h1>Add a Review</h1>
 
-    //       <Form action="/create" method="POST">
-    //         <label>Image:</label>
-    //         <input type="text" name="image" />
+          <Form action="/review/create" method="POST">
+            <label>Image:</label>
+            <input type="text" name="image" />
 
-    //         <label>Title:</label>
-    //         <input type="text" name="title" />
+            <label>Rating:</label>
+            <input type="number" name="rating" min={0} max={5}/>
 
-    //         <label>Comments:</label>
-    //         <textarea type="text" name="comments"/>
+            <label>Title:</label>
+            <input type="text" name="title" />
 
-    //         <label>Property:</label>
-    //         <input type="text" name="property"/>
+            <label>Comments:</label>
+            <textarea type="text" name="comments"/>
 
-    //         <label>Quality:</label>
-    //         <input type="text" name="quality"/>
+            <label>Producer:</label>
+            <input type="text" name="producer"/>
 
-    //         <label>Origin:</label>
-    //         <input type="text" name="origin"/>
+            <label>Quality:</label>
+            <input type="text" name="quality"/>
 
-    //         <label>Processing:</label>
-    //         <input type="text" name="processing"/>
+            <label>Origin:</label>
+            <input type="text" name="origin"/>
 
-    //         <label>Variety:</label>
-    //         <input type="text" name="variety"/>
+            <label>Process:</label>
+            <input type="text" name="process"/>
+
+            <label>Varietal:</label>
+            <input type="text" name="varietal"/>
        
-    //         <button type="submit">Save</button>
-    //       </Form>
-    //     </div>
-    // </div>
-   
-<div className='form-container'>
-  <div className="form form-left">
-    <h1>Add Review</h1>
-
-    <Form action="/create" method="POST" >
-      <label>Image:</label>
-      <input type="text" name="image" />
-
-      <label>Title:</label>
-      <input type="text" name="title" />
-
-      <label>Comments:</label>
-      <textarea type="text" name="comments"/>
-
-      
-    </Form>
-  </div>
-
-  <div className="form form-right">
-
-    <Form action="/create" method="POST" >
-
-        <label>Property:</label>
-      <input type="text" name="property"/>
-
-      <label>Quality:</label>
-      <input type="text" name="quality"/>
-
-      <label>Origin:</label>
-      <input type="text" name="origin"/>
-
-      <label>Processing:</label>
-      <input type="text" name="processing"/>
-
-      <label>Variety:</label>
-      <input type="text" name="variety"/>
-    </Form>
-      <button type="submit" className="submit-button">Save</button>
-  </div>
-
-</div>
-
+            <button type="submit">Save</button>
+          </Form>
+        </div>
+    </div>
 
   );
 }

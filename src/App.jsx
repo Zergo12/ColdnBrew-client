@@ -25,8 +25,9 @@ import {
 import Root from "./pages/Root/Root"
 import ItemsDetail, { deleteItemAction, itemDetailsLoader } from "./pages/ItemsDetail/ItemsDetail";
 import FormEdit, { editItemAction } from "./components/FormEdit/FormEdit";
-import ReviewsPage from "./pages/ReviewsPage/ReviewsPage";
-import FormReview from "./components/FormReview/FormReview";
+import ReviewsPage, { allReviewsLoader } from "./pages/ReviewsPage/ReviewsPage";
+import FormReview, { createReviewAction } from "./components/FormReview/FormReview";
+import ReviewDetails, { reviewDetailsLoader } from "./pages/ReviewDetails/ReviewDetails";
 
 
 const router = createBrowserRouter(
@@ -146,6 +147,7 @@ const router = createBrowserRouter(
 			/>
 				<Route
 				path="/reviews"
+				loader={allReviewsLoader}
 				element={
 					<IsPrivate>
 					<Navbar />
@@ -163,6 +165,28 @@ const router = createBrowserRouter(
 					<Footer/>
 					</IsPrivate>
 				}
+			/>
+			<Route
+				path="/review/:id"
+				loader={reviewDetailsLoader}
+				element={
+					<IsPrivate>
+					<Navbar />
+					<ReviewDetails/>
+					<Footer/>
+					</IsPrivate>
+				}
+			/>
+			<Route
+				path="/review/create"
+				action={createReviewAction}
+				element={
+					<IsPrivate>
+					<Navbar />
+					<FormReview/>
+					<Footer/>
+					</IsPrivate>
+					}
 			/>
 			<Route
 				path="/login"
