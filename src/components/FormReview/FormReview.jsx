@@ -16,7 +16,6 @@ export const createReviewAction = async ({ request }) => {
 	const process = formData.get("process")
 	const varietal = formData.get("varietal")
 
-  console.log(title, comments, image, rating, origin, quality, producer, process, varietal)
   await createReview ({title, comments, image, rating, origin ,quality, producer, process, varietal})
 
   return redirect("/")
@@ -28,9 +27,9 @@ function FormReview() {
         <div className="form">
           <h1>Add a Review</h1>
 
-          <Form action="/review/create" method="POST">
+          <Form action="/review/create" method="POST" enctype="multipart/form-data">
             <label>Image:</label>
-            <input type="text" name="image" />
+            <input type="file" name="image" />
 
             <label>Rating:</label>
             <input type="number" name="rating" min={0} max={5}/>

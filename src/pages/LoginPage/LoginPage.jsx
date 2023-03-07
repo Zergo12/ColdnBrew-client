@@ -33,7 +33,6 @@ function LoginPage() {
 	// Cuando el dato exista y se vuelva a pintar el componente mostraremos el error o ejecutamos la funcionalidad que refleja la sesion en caso de traer el token.
 	const authToken = actionData?.authToken
 	const error = actionData?.error
-	console.log(authToken)
 
 	if (authToken) {
 		storeToken(authToken)
