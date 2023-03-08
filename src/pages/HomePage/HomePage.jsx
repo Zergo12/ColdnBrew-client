@@ -1,32 +1,7 @@
 import ControlledCarousel from "../../components/Carousel/ControlledCarousel";
+import Map from "../../components/GoogleMaps/MapContainer";
 import "./HomePage.css";
 
-// import $script from 'scriptjs';
-
-// $script(`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&callback=initMap`, function () {
-//   //Put your google api functions here as callback
-//   const mapDiv = document.getElmentById("map")
-//   let map;
-//   function initMap() {
-//     map = new google.maps.Map(document.getElementById("map"), {
-//         center: { lat:  20.5880600, lng:  -100.3880600 },
-//         zoom: 8,
-//     });
-// }
-// });
-
-
-
-// src=`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&callback=initMap`>
-
-
-// let map:
-// function initMap() {
-// map = new google.maps.Map(document.getElementById("map"), {
-//     center: { lat:  20.5880600, lng:  -100.3880600 },
-//     zoom: 8,
-// });
-// }
 
 function HomePage() {
 
@@ -66,8 +41,15 @@ function HomePage() {
           <img className="V60" src="https://images.unsplash.com/photo-1545665613-29394cee622b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="V60 Dripper"/>
         </div>
       </div>
-      <div className="extraContent" >
-        <div id="map"></div>
+      <hr></hr>
+      <div className="maps">
+        <div className="mapTxt">
+          <h4>Find nearby cafes</h4>
+          <img src="/client/public/takeOut-coffee-64.png" alt="Coffee"/>
+        </div>
+        <div className="map" >
+          <Map/>
+        </div>
       </div>
 
     </div>
