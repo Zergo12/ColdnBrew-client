@@ -69,13 +69,11 @@
   margin-bottom: 20px;
 }
 
-.home hr{
-  width: 100%;
+
+.mapTxt p{
+  text-align: center;
 }
 
-.mapTx img{
-height: 40px;
-}
 
 .map{
   flex-basis: 50%;

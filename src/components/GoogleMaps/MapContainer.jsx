@@ -4,15 +4,12 @@ import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 const containerStyle = {
   width: "85%",
   height: "400px",
+  borderRadius:20,
 };
 
-const center = {
-  lat: 20.5880600,
-  lng: -100.3880600,
-};
 
 function Map() {
-  const [location, setLocation] = useState(center);
+  const [location, setLocation] = useState({});
   const [cafes, setCafes] = useState([]);
   const mapRef = useRef(null);
 
@@ -63,6 +60,7 @@ function Map() {
         {cafes.map((cafe) => (
           <Marker key={cafe.place_id} position={cafe.geometry.location} />
         ))}
+
       </GoogleMap>
     </LoadScript>
   );

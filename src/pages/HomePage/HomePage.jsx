@@ -18,7 +18,6 @@ function HomePage() {
       <ControlledCarousel />
       </>
 
-
      <h2 className="coffeeJourneyHeader">Start Your Brewing Coffee Manually Journey</h2>
 
       <div className="coffeeManually">
@@ -37,23 +36,21 @@ function HomePage() {
               There is something about taking the time to hand craft a cup of coffee,
             </p>
         </div>
-        <div className="image">
-          <img className="V60" src="https://images.unsplash.com/photo-1545665613-29394cee622b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="V60 Dripper"/>
-        </div>
+          <div className="image">
+            <img className="V60" src="https://images.unsplash.com/photo-1545665613-29394cee622b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="V60 Dripper"/>
+          </div>
       </div>
       <hr></hr>
       <div className="maps">
         <div className="mapTxt">
-          <h4>Find nearby cafes</h4>
-          <img src="/client/public/takeOut-coffee-64.png" alt="Coffee"/>
+          <h4>Find nearby coffe shops</h4>
+          <p>Have a good time <br></br> and enjoy life!</p>
         </div>
         <div className="map" >
           <Map/>
         </div>
       </div>
-
     </div>
-
   );
 }
 
