@@ -17,11 +17,32 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Cold&Brew</title>
+    <style>
+      #map {
+        display: flex;
+        justify-content: center;
+        height: 40%;
+
+        
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
   </head>
   <body>
+
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root">
+
+      
+    </div>
+   
+    <!-- <div id="map"></div> -->
+
     <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js" crossorigin></script>
 
     <script
@@ -30,7 +51,24 @@
 
     <script
       src="https://cdn.jsdelivr.net/npm/react-bootstrap@next/dist/react-bootstrap.min.js"
-      crossorigin></script>
+      crossorigin>
+    </script>
+
+
+      <!-- <script async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMnqKlKjetfIn3_21TUtZykAMvkd3NzXI&callback=initMap">
+      </script>
+      
+      <script>
+          const mapDiv = document.getElmentById("map")
+          let map;
+          function initMap() {
+          map = new google.maps.Map(document.getElementById("map"), {
+              center: { lat:  20.5880600, lng:  -100.3880600 },
+              zoom: 8,
+          });
+      }
+      </script> -->
 
     <script>var Alert = ReactBootstrap.Alert;</script>
         <!--

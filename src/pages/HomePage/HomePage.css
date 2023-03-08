@@ -65,4 +65,12 @@
 .extraContent{
     margin-top: 1%;
   }
+
+  #map {
+    display: flex;
+    justify-content: center;
+    height: 40%;
+
+    
+  }
     

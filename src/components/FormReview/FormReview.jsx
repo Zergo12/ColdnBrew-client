@@ -27,9 +27,9 @@ function FormReview() {
         <div className="form">
           <h1>Add a Review</h1>
 
-          <Form action="/review/create" method="POST" enctype="multipart/form-data">
+          <Form action="/review/create" method="POST" >
             <label>Image:</label>
-            <input type="file" name="image" />
+            <input type="text" name="image" />
 
             <label>Rating:</label>
             <input type="number" name="rating" min={0} max={5}/>

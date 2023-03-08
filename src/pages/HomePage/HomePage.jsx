@@ -1,9 +1,35 @@
-
 import ControlledCarousel from "../../components/Carousel/ControlledCarousel";
 import "./HomePage.css";
 
+// import $script from 'scriptjs';
+
+// $script(`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&callback=initMap`, function () {
+//   //Put your google api functions here as callback
+//   const mapDiv = document.getElmentById("map")
+//   let map;
+//   function initMap() {
+//     map = new google.maps.Map(document.getElementById("map"), {
+//         center: { lat:  20.5880600, lng:  -100.3880600 },
+//         zoom: 8,
+//     });
+// }
+// });
+
+
+
+// src=`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&callback=initMap`>
+
+
+// let map:
+// function initMap() {
+// map = new google.maps.Map(document.getElementById("map"), {
+//     center: { lat:  20.5880600, lng:  -100.3880600 },
+//     zoom: 8,
+// });
+// }
 
 function HomePage() {
+
   return (
     <div className="home">
         <section id="intro">
@@ -41,7 +67,7 @@ function HomePage() {
         </div>
       </div>
       <div className="extraContent" >
-      
+        <div id="map"></div>
       </div>
 
     </div>

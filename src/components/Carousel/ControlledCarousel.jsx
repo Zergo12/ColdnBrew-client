@@ -55,7 +55,7 @@ function UncontrolledExample() {
             </p>
           </Carousel.Caption>
         </Carousel.Item>
-
+        
       </Carousel>
     </div>
     
