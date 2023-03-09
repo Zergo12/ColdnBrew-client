@@ -26,11 +26,9 @@ function Navbar() {
               <button className="btnLogout" onClick={logOutUser}>Logout</button>
 
               <Link to="/profile">
-                <button>Profile</button>
-              </Link>
-
               <span>{user && user.name}</span>
-              {/* <img src="https://picsum.photos/id/402/200/300" style={{ width: 50, height: 50, borderRadius: 25}} alt="profile" /> */}
+              </Link>
+              <img src={user.picture} style={{ width: 40, height: 40, borderRadius: 25}} alt="profile" />
             </div>
           )}
 
@@ -47,10 +45,10 @@ function Navbar() {
             </div>
           )}
 
-          <form>
+          {/* <form>
             <input type="text" name="search" placeholder="Search"/>
             <button type="submit">Search</button>
-          </form>
+          </form> */}
         </nav>
     </>
   );

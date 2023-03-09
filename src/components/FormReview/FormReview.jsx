@@ -18,7 +18,7 @@ export const createReviewAction = async ({ request }) => {
 
   await createReview ({title, comments, image, rating, origin ,quality, producer, process, varietal})
 
-  return redirect("/")
+  return redirect("/reviews")
 }
 
 function FormReview() {
@@ -29,7 +29,7 @@ function FormReview() {
 
           <Form action="/review/create" method="POST" >
             <label>Image:</label>
-            <input type="text" name="image" />
+            <input type="file" name="image" />
 
             <label>Rating:</label>
             <input type="number" name="rating" min={0} max={5}/>

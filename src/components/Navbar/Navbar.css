@@ -44,6 +44,11 @@
   
 }
 
+.btnLoggedIn img{
+ margin-left: 5px;
+  
+}
+
 .btnLoggedOut button {
   margin-left: 10px;
 }
