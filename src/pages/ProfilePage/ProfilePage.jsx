@@ -1,5 +1,11 @@
-import { Link, useOutletContext } from "react-router-dom";
+import { Link, useLoaderData, useOutletContext } from "react-router-dom";
+import { getProfileByID } from "../../services/profile.service";
 import "./ProfilePage.css";
+
+export const profileDetailsLoader = async ({params:{id}}) => {
+  const {data: user} = await getProfileByID(id)
+  return {user}
+}
 
 function ProfilePage() {
   const { user } = useOutletContext();

@@ -5,8 +5,10 @@ const reviewURL = baseURL + "/profile"
 
 const profileService = axios.create({ baseURL: reviewURL })
 
+export const getProfile = async () => await profileService.get('/profile')
+
 export const getProfileByID = async (id) =>
 	await profileService.get(`/${id}`)
 
 export const editProfile = async (id, profileData) =>
-	await profileService.put(`/edit/${id}`, profileData)
+	await profileService.put(`/editProfile/${id}`, profileData)

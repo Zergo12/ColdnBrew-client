@@ -1,15 +1,14 @@
-import { Form, redirect, useLoaderData, useOutletContext} from 'react-router-dom';
-import { editProfile, getProfileByID } from '../../services/profile.service';
+import { Form, redirect, useOutletContext} from 'react-router-dom';
+import { editProfile } from '../../services/profile.service';
 
 
 
-export const editProfileAction = async ({request}) => { 
+export const editProfileAction = async ({params:{id}, request}) => { 
 	const formData = await request.formData()
-	const title = formData.get("title")
 	const description = formData.get("description")
 	const picture = formData.get("picture")
 
-  await editProfile ({title ,description, picture})
+  await editProfile (id, {description, picture})
 
   return redirect("/profile")
 }
@@ -22,7 +21,7 @@ const { user } = useOutletContext();
         <div className="form">
           <h1>Edit your Profile</h1>
 
-          <Form action={`/editedProfile/:id`} method="POST">
+          <Form action={`/editProfile/${user._id}`} method="POST">
             <label>Image:</label>
             <input type="text" name="picture" defaultValue={user.picture} />
 

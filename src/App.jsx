@@ -3,12 +3,17 @@ import { Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'
 // Pages
 import HomePage from "./pages/HomePage/HomePage";
-import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import ProfilePage, { profileDetailsLoader }  from "./pages/ProfilePage/ProfilePage";
 import SignupPage, { signupPageAction } from "./pages/SignupPage/SignupPage";
 import LoginPage, { loginPageAction } from "./pages/LoginPage/LoginPage";
 import BrewingMethodsPage, { allItemsLoader } from "./pages/BrewingMethodsPage/BrewingMethodsPage";
 import RecipesPage, { allRecipesLoader } from "./pages/RecipesPage/RecipesPage";
 import FactsPage from "./pages/FactsPage/FactsPage";
+import ReviewsPage, { allReviewsLoader } from "./pages/ReviewsPage/ReviewsPage";
+import ReviewDetails, { reviewDetailsLoader } from "./pages/ReviewDetails/ReviewDetails";
+import ItemsDetail, { deleteItemAction, itemDetailsLoader } from "./pages/ItemsDetail/ItemsDetail";
+import FormEditProfile, { editProfileAction} from "./pages/EditProfile/EditProfile";
+
 
 // Components
 import Navbar from "./components/Navbar/Navbar";
@@ -16,6 +21,7 @@ import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
 import Footer from "./components/Footer/Footer";
 import FormCreate, { createItemAction } from "./components/Form/FormCreate";
+import FormReview, { createReviewAction } from "./components/FormReview/FormReview";
 
 import {
 	createBrowserRouter,
@@ -23,12 +29,8 @@ import {
 	RouterProvider
 } from "react-router-dom"
 import Root from "./pages/Root/Root"
-import ItemsDetail, { deleteItemAction, itemDetailsLoader } from "./pages/ItemsDetail/ItemsDetail";
 import FormEdit, { editItemAction } from "./components/FormEdit/FormEdit";
-import ReviewsPage, { allReviewsLoader } from "./pages/ReviewsPage/ReviewsPage";
-import FormReview, { createReviewAction } from "./components/FormReview/FormReview";
-import ReviewDetails, { reviewDetailsLoader } from "./pages/ReviewDetails/ReviewDetails";
-import FormEditProfile, { editProfileAction, profileDetailsLoader } from "./pages/EditProfile/EditProfile";
+
 
 
 const router = createBrowserRouter(
@@ -58,6 +60,7 @@ const router = createBrowserRouter(
 
 			<Route
 				path="/editProfile/:id"
+				action={editProfileAction}
 				element={
 					<IsPrivate>
 					<Navbar />
