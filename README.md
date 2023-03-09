@@ -29,7 +29,7 @@ npm run test
 👤 **Diego Zermeño **
 
 * Github: [@Zergo12](https://github.com/Zergo12)
-* LinkedIn: [@Diego Zermeño Gómez](https://linkedin.com/in/Diego Zermeño Gómez)
+* LinkedIn: [@Diego Zermeño Gómez](https://linkedin.com/in/diego-zermeno-gomez)
 
 ## Show your support
 
