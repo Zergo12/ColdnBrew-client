@@ -28,6 +28,7 @@ import FormEdit, { editItemAction } from "./components/FormEdit/FormEdit";
 import ReviewsPage, { allReviewsLoader } from "./pages/ReviewsPage/ReviewsPage";
 import FormReview, { createReviewAction } from "./components/FormReview/FormReview";
 import ReviewDetails, { reviewDetailsLoader } from "./pages/ReviewDetails/ReviewDetails";
+import FormEditProfile, { editProfileAction, profileDetailsLoader } from "./pages/EditProfile/EditProfile";
 
 
 const router = createBrowserRouter(
@@ -56,6 +57,17 @@ const router = createBrowserRouter(
 			/>
 
 			<Route
+				path="/editProfile/:id"
+				element={
+					<IsPrivate>
+					<Navbar />
+					<FormEditProfile/>
+					<Footer/>
+					</IsPrivate>
+				}
+			/>
+
+			<Route
 				path="/create"
 				action={createItemAction}
 				element={
@@ -66,7 +78,6 @@ const router = createBrowserRouter(
 					</IsPrivate>
 					}
 			/>
-
 			<Route
 				path="/signup"
 				action={signupPageAction}

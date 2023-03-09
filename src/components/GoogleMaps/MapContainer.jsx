@@ -2,11 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 const containerStyle = {
-  width: "85%",
+  width: "75%",
   height: "400px",
   borderRadius:20,
 };
-
 
 function Map() {
   const [location, setLocation] = useState({});
@@ -14,7 +13,7 @@ function Map() {
   const mapRef = useRef(null);
 
   useEffect(() => {
-    // Obtener ubicación del usuario
+    // Position in the map depending where you are
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const userLocation = {
@@ -24,7 +23,7 @@ function Map() {
         setLocation(userLocation);
         mapRef.current.panTo(userLocation);
 
-        // Buscar cafeterías cercanas
+        // Nearby coffee shops in your location
         const service = new window.google.maps.places.PlacesService(mapRef.current);
         service.nearbySearch({
           location: userLocation,
@@ -49,7 +48,7 @@ function Map() {
       googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
         version="3.45"
         libraries={["places"]}
-  >
+    >
       <GoogleMap 
         mapContainerStyle={containerStyle}
         center={location}
@@ -60,7 +59,6 @@ function Map() {
         {cafes.map((cafe) => (
           <Marker key={cafe.place_id} position={cafe.geometry.location} />
         ))}
-
       </GoogleMap>
     </LoadScript>
   );
