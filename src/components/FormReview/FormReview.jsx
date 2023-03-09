@@ -27,7 +27,7 @@ function FormReview() {
         <div className="form">
           <h1>Add a Review</h1>
 
-          <Form action="/review/create" method="POST" >
+          <Form action="/review/create" method="POST"  >
             <label>Image:</label>
             <input type="text" name="image" />
 
