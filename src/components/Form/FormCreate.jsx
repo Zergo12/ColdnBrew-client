@@ -11,7 +11,6 @@ export const createItemAction = async ({ request }) => {
 	const image = formData.get("image")
 	const category = formData.get("category")
 
-  console.log(title, description, image, category)
   await createItem ({title, description, image, category})
 
   return redirect("/")
